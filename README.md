@@ -30,6 +30,24 @@ Given this information, the agent has to learn how to best select his actions. F
 
 The task is episodic, and in order to solve the environment, your agent must get an average score of +13 over 100 consecutive episodes.
 
+## Directory Structure <a name="directoryStructure"></a>
+
+- Root /
+    - README.md (This readme file)
+    - Report.md (A report describing results)
+    - agent.py (The python code for the learning agent)
+    - model.py (The neural networks)
+    - Navigation_Solution.ipynb (A Jupyter notebook used to sove the RL problem)
+    - dqn.pth (The neural network weights for the DQN solution)
+    - double_dqn.pth (The neural network weights for the DoubleDQN solution)
+    - dueling_dqn.pth (The neural network weights for the DuelingDQN solution)
+    - images /  
+        - banana.gif  (Animated image of environment)
+        - banana.png (Image of environment)
+        - dqn_scores.png (Plot of scores for DQN solution)
+        - double_dqn_scores.png (Plot of scores for DoubleDQN solution)
+        - dueling_dqn_scores.png (Plot of scores for DuelingDQN solution)
+   
 ### Getting Started
 
 
