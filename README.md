@@ -13,8 +13,15 @@ A reward of +1 is provided for collecting a yellow banana, and a reward of -1 is
 </p>
 The state space has 37 dimensions and contains the agent's velocity, along with ray-based perception of objects around agent's forward direction. 
 
-The 35 dimensions of ray perception are broken down as: 7 rays projecting from the agent at the following angles (and returned back in the same order): [20, 90, 160, 45, 135, 70, 110] where 90 is directly in front of the agent. Each ray is 5 dimensional and it projected onto the scene. If it encounters one of four detectable objects (i.e. yellow banana, wall, blue banana, agent), the value at that position in the array is set to 1. Finally there is a distance measure which is a fraction of the ray length. Each ray is [Yellow Banana, Wall, Blue Banana, Agent, Distance]. For example, [0,1,1,0,0,0.2] means that there is a blue banana detected 20% of the distance along the ray with a wall behind it. The velocity of the agent is two dimensional: left/right velocity (usually near 0) and forward/backward velocity (0 to 11.2). 
-Given this information, the agent has to learn how to best select actions. Four discrete actions are available, corresponding to:
+The 35 dimensions of ray perception contain the following bits of informaton: 
+- 7 rays are projecting from the agent at the following angles (measured in degrees): [20, 90, 160, 45, 135, 70, 110] where 90 is directly in front of the agent. 
+- Each ray is 5 dimensional. If it encounters adetectable object (i.e. yellow banana, wall, blue banana, agent), the value at that position in the array is set to 1. 
+
+The last number within each ray is a distance measure which is a fraction of the ray length normalized to 1. Each ray is [Yellow Banana, Wall, Blue Banana, Agent, Distance]. For example, [0,1,1,0,0,0.2] means that there is a blue banana detected 20% of the distance.
+
+The velocity of the agent is two dimensional: left/right velocity and forward/backward velocity. 
+
+Given this information, the agent has to learn how to best select his actions. Four discrete actions are available:
 
 - 0 - move forward.
 - 1 - move backward.
