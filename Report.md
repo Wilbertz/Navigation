@@ -74,6 +74,18 @@ The best performance was achieved by **Double DQN** where the reward of +13 was 
 
 ## Ideas for improvement
 
-- Using Prioritized Replay ([paper](https://arxiv.org/abs/1511.05952)) showed a massive improvement over Double DQNs for Atari games. It is expected that it'll lead to an improved performance here too.
-- Other improvements to the original DQN algorithms that were briefly mentioned in the course could be  potentially beneficial too: learning from [multi-step bootstrap targets](https://arxiv.org/abs/1602.01783) , [Distributional DQN](https://arxiv.org/abs/1707.06887), [Noisy DQN](https://arxiv.org/abs/1706.10295)
-- Hyperparameter search should improve the performance too.
+In a paper [Rainbow: Combining Improvements in Deep Reinforcement Learning](https://arxiv.org/abs/1710.02298) the authors Matteo Hessel, Joseph Modayil, Hado van Hasselt, Tom Schaul, Georg Ostrovski, Will Dabney, Dan Horgan, Bilal Piot, Mohammad Azar, David Silver describe several improvement to DQN. Double DQN and Dueling DQL have already been implemented, but there are still other possible improvements:
+
+- N-steps DQN
+A simple unrolling the Bellman equation could help to improve speed and stability.
+
+- Noisy neworks
+Adding noise to the network weights could make exploration more efficient. Either independent gaussian noise or factoried gaussian noise can be used.
+
+- Prioritized replay buffer
+By assigning priorities to buffer samples according to training loss and sampling the buffer proportional to these priorities training might improve.
+
+- Categorical DQN
+Q values might be replaced with more generic Q-value probability distributions. 
+
+Last not least, hyperparameter search should improve the performance too.
