@@ -22,10 +22,8 @@ Due to the fact that our space is continous, a traditional tabular representatio
 
 We choose a 2-hidden layer network with layers having 64 and 32 hidden units with relu activation applied after each fully-connected layer. Adam (Adaptive Moment Estimation) was used as the optimizer for finding the optimal weights. The network implementation can be found in the model.py file. Additional layers did not improve the algorithm.
 
-- **exploration vs. exploitation**: 
-To address this exploration vs. exploitation dilemma, an 𝛆-greedy algorithm was implemented.The agent "explores" by picking a random action with some probability epsilon 𝛜. However, the agent continues to "exploit" its knowledge of the environment by choosing actions based on the policy with probability (1-𝛜).
-
-The value of epsilon is decayed over time, therefore the agent favors exploration initially, but favors exploitation later. The starting and ending values for epsilon and the decays rate are hyperparameters for the algorithm.
+- **Exploration vs. Exploitation**: 
+To address this exploration vs. exploitation dilemma, an 𝛆-greedy algorithm was implemented.The agent "explores" by picking a random action with some probability epsilon 𝛜. However, the agent continues to "exploit" its knowledge of the environment by choosing actions based on the policy with probability (1-𝛜). The value of epsilon is decayed over time, therefore the agent favors exploration initially, but favors exploitation later. The starting and ending values for epsilon and the decays rate are hyperparameters for the algorithm.
 
 - **Fixed Q-targets**: 
 When we perform an update of our network parameters w to make Q closer to the desired result, we indirectly can alter the values for Q and other states nearby. This can make training quite unstable. When we update Q for a state s, then on subsequent states s' Q(s', a') might become worse. To make training more stable, a target network can be used. This target network is a copy of our network. This network is synchronized with the main network periodically. 
