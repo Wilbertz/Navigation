@@ -91,9 +91,6 @@ class Agent:
         # Initialize time step (for updating every UPDATE_EVERY steps)
         self.t_step = 0
 
-    def _reset(self):
-        pass
-
     def step(self, state, action, reward, next_state, done):
         # Save experience in replay memory
         self.memory.append(state, action, reward, next_state, done)
