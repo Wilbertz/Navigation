@@ -42,8 +42,8 @@ Their dueling network uses two separate estimators: one for the state value func
   | ----------------------------------- | ----- |
   | Experience buffer size              | 10000 |
   | Batch size                          | 64    |
-  | $\gamma$ (discount factor)          | 0.99  |
-  | $\tau$                              | 1e-3  |
+  | Gamma (discount factor)             | 0.99  |
+  | Tau                                 | 1e-3  |
   | Number of episodes                  | 500   |
   | Update interval                     | 5     |
   | Learning rate                       | 1e-3  |
@@ -52,10 +52,9 @@ Their dueling network uses two separate estimators: one for the state value func
   | Epsilon minimum                     | 0.1   |
   | Epsilon decay                       | 0.99  |
 
+## Results
 
-#Results
-
-The best performance was achieved by **Double DQN** where the reward of +13 was achieved in **377** episodes. It was a bit confusing to see that Dueling Double DQN wasn't the best one but I attribute it to the fact that I didn't do a hyperparameter search for the same and instead used the same hyperparameter setting. The plots of the rewards for the different variants of DQN is shown below:
+The best performance was achieved by **Double DQN** where the reward of +13 was achieved in **377** episodes. The plots of the rewards for the different variants of DQN is shown below:
 
 
 | Double DQN                                 | DQN                                | Dueling DQN                                         |
