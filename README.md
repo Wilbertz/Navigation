@@ -15,9 +15,9 @@ The state space has 37 dimensions and contains the agent's velocity, along with 
 
 The 35 dimensions of ray perception contain the following bits of informaton: 
 - 7 rays are projecting from the agent at the following angles (measured in degrees): [20, 90, 160, 45, 135, 70, 110] where 90 is directly in front of the agent. 
-- Each ray is 5 dimensional. If it encounters adetectable object (i.e. yellow banana, wall, blue banana, agent), the value at that position in the array is set to 1. 
+- Each ray is 5 dimensional. If it encounters a detectable object (i.e. yellow banana, wall, blue banana, agent), the value at that position in the array is set to 1. 
 
-The last number within each ray is a distance measure which is a fraction of the ray length normalized to 1. Each ray is [Yellow Banana, Wall, Blue Banana, Agent, Distance]. For example, [0,1,1,0,0,0.2] means that there is a blue banana detected 20% of the distance.
+The last number within each ray is a distance measure which is a fraction of the ray length normalized to 1. Each ray is [Yellow Banana, Wall, Blue Banana, Agent, Distance]. For example, [0,1,1,0,0,0.2] means that there is a blue banana detected at 20% of the distance.
 
 The velocity of the agent is two dimensional: left/right velocity and forward/backward velocity. 
 
