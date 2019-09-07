@@ -18,7 +18,9 @@ The report contains three parts:
 At the core of the learning algorithm is [Deep Q-learning](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf), 
 which exceeded human-level performance in 49 Atari games. The algorithm is a modification of Q-learning. Q-learning belongs to the class of Temporal-Difference learning (TD-learning) methods. The idea of Q-learning is to learn an action-value function, that estimates future rewards given a state and a choosen action.
 
-Due to the fact that our space is continous, a traditional tabular representation cannot be used. Deep neural networks are used as universal function approximators instead. Using a function approximator, we update the weights of the function approximator.
+Due to the fact that our space is continous, a traditional tabular representation is difficult to use. Deep neural networks are used as universal function approximators instead. Using SGD (Stochastic Gradient Descent), we update the weights of the function approximator.
+
+Using a 
 
 - **Fixed Q-targets**: 
 When we perform an update of our network parameters w to make Q closer to the desired result, we indirectly can alter the values for Q and other states nearby. This can make training quite unstable. When we update Q for a state s, then on subsequent states s' Q(s', a') might become worse. To make training more stable, a target network can be used. This target network is a copy of our network. This network is synchronized with the main network periodically. 
