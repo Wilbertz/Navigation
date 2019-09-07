@@ -3,7 +3,7 @@ from collections import namedtuple, deque
 import numpy as np
 import torch
 
-Experience = namedtuple('Experience', field_names=['state', 'action', 'reward', 'done', 'new_state'])
+Experience = namedtuple('ExperienceTuple', field_names=['state', 'action', 'reward', 'next_state', 'done'])
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
@@ -27,12 +27,12 @@ class ExperienceBuffer:
         self.seed = random.seed(seed)
 
     def append(self, state, action, reward, next_state, done):
-        """Add a new experience to memory."""
+        """Add a new experience to experience_buffer."""
         e = self.experience(state, action, reward, next_state, done)
         self.memory.append(e)
 
     def sample(self):
-        """Randomly sample a batch of experiences from memory."""
+        """Randomly sample a batch of experiences from experience_buffer."""
         experiences = random.sample(self.memory, k=self.batch_size)
 
         states = torch.from_numpy(np.vstack([e.state for e in experiences if e is not None]))\
@@ -49,5 +49,15 @@ class ExperienceBuffer:
         return states, actions, rewards, next_states, dones
 
     def __len__(self):
-        """Return the current size of internal memory."""
+        """Return the current size of internal experience_buffer."""
         return len(self.memory)
+
+
+if __name__ == "__main__":
+    eb = ExperienceBuffer(1, 100, 5, 42)
+    for i in range(10):
+        eb.append(random.randint(1, 10), random.randint(1, 5), 1.0 * random.randint(1, 100), random.randint(1, 10), False)
+
+    states, actions, rewards, next_states, dones = eb.sample()
+    print(states)
+
