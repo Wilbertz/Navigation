@@ -20,7 +20,7 @@ which exceeded human-level performance in 49 Atari games. The algorithm is a mod
 
 Due to the fact that our space is continous, a traditional tabular representation is difficult to use. Deep neural networks are used as universal function approximators instead. Using SGD (Stochastic Gradient Descent), we update the weights of the neural network in order to get an approximation for the action-value function. 
 
-We choose a 2-hidden layer network with layers having 64 and 32 hidden units with relu activation applied after each fully-connected layer. Adam (Adaptive Moment Estimation) was used as the optimizer for finding the optimal weights. The network implementation can be found in the model.py file. Additional layers did not improve the algorithm.
+We choose a 2-hidden layer network with layers having 64 and 32 hidden units with relu (rectified linear unit) activation applied after each fully-connected layer. Adam (Adaptive Moment Estimation) was used as the optimizer for finding the optimal weights. The network implementation can be found in the model.py file. Additional layers did not improve the algorithm.
 
 - **Exploration vs. Exploitation**: 
 To address this exploration vs. exploitation dilemma, an 𝛆-greedy algorithm was implemented.The agent "explores" by picking a random action with some probability epsilon 𝛜. However, the agent continues to "exploit" its knowledge of the environment by choosing actions based on the policy with probability (1-𝛜). The value of epsilon is decayed over time, therefore the agent favors exploration initially, but favors exploitation later. The starting and ending values for epsilon and the decays rate are hyperparameters for the algorithm.
