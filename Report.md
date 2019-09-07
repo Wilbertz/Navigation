@@ -76,7 +76,8 @@ The best performance was achieved by **Double DQN** where the reward of +13 was 
 
 In a paper [Rainbow: Combining Improvements in Deep Reinforcement Learning](https://arxiv.org/abs/1710.02298) the authors Matteo Hessel, Joseph Modayil, Hado van Hasselt, Tom Schaul, Georg Ostrovski, Will Dabney, Dan Horgan, Bilal Piot, Mohammad Azar, David Silver describe several improvement to DQN. Double DQN and Dueling DQL have already been implemented, but there are still other possible improvements:
 
-- N-steps DQN
+- N-steps DQN:
+
 A simple unrolling the Bellman equation could help to improve speed and stability.
 
 - Noisy neworks
