@@ -1,6 +1,14 @@
 # Navigation
 
-## Introduction
+## Table of Contents
+
+1. [Introduction](#introduction)
+2. [Directory Structure](#directoryStructure)
+3. [Installation](#installation)
+4. [Instructions](#insrructions)
+5. [Results](#results)
+
+## Introduction <a name="introduction"></a>
 The goal of this project, is to train an agent to navigate (and collect bananas!) in a large, square world.
 A reward of +1 is provided for collecting a yellow banana, and a reward of -1 is provided for collecting a blue banana. Thus, the goal of your agent is to collect as many yellow bananas as possible while avoiding blue bananas.
 
@@ -48,7 +56,7 @@ The task is episodic, and in order to solve the environment, your agent must get
         - double_dqn_scores.png (Plot of scores for DoubleDQN solution)
         - dueling_dqn_scores.png (Plot of scores for DuelingDQN solution)
    
-## Installation
+## Installation <a name="installation"></a>
 
 This project was written in Python 3.6, using a Jupyter Notebook on Anaconda. Currently (Septemebr 2019) you cannot use Python 3.7, since tensorflow 1.7.1 doesn't have a version corresponding to python 3.7 yet.
 
@@ -70,4 +78,8 @@ In addition to installing the above package the Unity environment has to be inst
 
 ```python
 env = UnityEnvironment(file_name="Banana.app")
+
+## Instructiuons <a name="instructions"></a>
+
+## Results <a name="results"></a>
 
