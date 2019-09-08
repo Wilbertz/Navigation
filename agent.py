@@ -174,6 +174,8 @@ class Agent:
     def update_value_parameters(self, experiences, gamma):
         """
             This method is used within the step method to update the value parameters.
+            This method uses code snippets from:
+            Deep Reinforcement Learning Hands-On by Maxim Lapan, Chapter 7, Packt Publishing
             Args:
                 experiences: The tuple of torch tensors. containing states, actions, rewards, next_states and dones.
                 gamma (float): The discount factor for rewards.
@@ -185,27 +187,30 @@ class Agent:
             q_targets_next = self.qnetwork_target(next_states).detach().max(1)[0].unsqueeze(1)
 
         elif self.update_type == 'double_dqn':
+            # In case of Double DQN we calculate the best action to take into the next state using
+            # the local network, but values corresponding to this action come from the target network.
             best_local_actions = self.qnetwork_local(states).max(1)[1].unsqueeze(1)
             double_dqn_targets = self.qnetwork_target(next_states)
+            # Using torch gather to do multi index selection
             q_targets_next = torch.gather(double_dqn_targets, 1, best_local_actions)
         else:
             raise ValueError("Unknown update type, only dqn or double_dqn are supported.")
 
         # Compute Q targets for current states
-        q_targets = rewards + (gamma * q_targets_next * (1 - dones))
+        q_actual = rewards + (gamma * q_targets_next * (1 - dones))
 
         # Get expected Q values from local model
         q_expected = self.qnetwork_local(states).gather(1, actions)
 
         # The goal is to minimize the mean square error between expected and actual q values.
-        loss = torch.nn.functional.mse_loss(q_expected, q_targets)
+        loss = torch.nn.functional.mse_loss(q_expected, q_actual)
 
         # Minimize the loss using SGD
         self.optimizer.zero_grad()
         loss.backward()
         self.optimizer.step()
 
-        # Update the target model parameters
+        # Update the target model parameters with tau as interpolating parameter
         self.update_model_parameters(self.qnetwork_local, self.qnetwork_target, self.tau)
 
     @staticmethod
@@ -222,13 +227,3 @@ class Agent:
 
         for target_param, local_param in zip(target_model.parameters(), local_model.parameters()):
             target_param.data.copy_(tau * local_param.data + (1.0 - tau) * target_param.data)
-
-
-if __name__ == "__main__":
-    eb = ExperienceBuffer(1, 100, 5)
-    for i in range(10):
-        eb.append_experience(random.randint(1, 10), random.randint(1, 5), 1.0 * random.randint(1, 100),
-                             random.randint(1, 10), False)
-
-    states, actions, rewards, next_states, dones = eb.get_experiences()
-    print(states)
