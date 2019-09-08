@@ -32,8 +32,8 @@ class DQNLearning:
         """
         self.agent = agent
         self.env = env
-        self.brain_name = brain_name,
-        self.n_episodes = n_episodes,
+        self.brain_name = brain_name
+        self.n_episodes = n_episodes
         self.max_timesteps = max_timesteps
         self.eps_start = eps_start
         self.eps_end = eps_end
@@ -78,10 +78,10 @@ class DQNLearning:
                 if done:  # break if episode is complete
                     break
 
-                self.eps = max(self.eps_end, self.eps * self.eps_decay)  # Decrease epsilon according schedule
+            self.eps = max(self.eps_end, self.eps * self.eps_decay)  # Decrease epsilon according schedule
 
-                if self.update_and_print_scores(i_episode):
-                    break
+            if self.update_and_print_scores(i_episode):
+                break
 
         return self.scores
 
@@ -96,7 +96,7 @@ class DQNLearning:
         """
         self.scores_window.append(self.score)  # Update the scores queue
         self.scores.append(self.score)  # Add the current score to the list of scores
-        average_score = np.mean(self.scores_window) # Compute the average score over the window
+        average_score = np.mean(self.scores_window)  # Compute the average score over the window
 
         print('\rEpisode {} \tAverage score: {: .2f}'.format(index_episode, average_score), end="")
 
@@ -105,7 +105,8 @@ class DQNLearning:
             return False
 
         if average_score >= self.target_reward:  # Check whether the target reward has been reached.
-            print('\nEnvironment solved in {: d} episodes!\tAverage Score: {: .2f}'.format(index_episode - 100, average_score))
+            print('\nEnvironment solved in {: d} episodes!\tAverage Score: {: .2f}'.format(index_episode - 100,
+                                                                                           average_score))
             torch.save(self.agent.qnetwork_local.state_dict(), self.weights_file)
             return True
 
