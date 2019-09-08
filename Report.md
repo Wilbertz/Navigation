@@ -4,7 +4,17 @@ Author: [Harald Wilbertz](http://github.com/wilbertz)
 
 The project uses Reinforcement Learning methods, in particular: [Deep Q-learning](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf) and several variants, to learn a suitable policy using the Unity banana environment. 
 The environment consists of a continuous state space with the goal to collect yellow bananas (reward: +1) while avoiding blue bananas (reward: -1). 
-The state space has 37 dimensions and contains the agent's velocity, along with ray-based perception of objects around agent's forward direction. There are 4 actions to choose from: move left, move right, move forward and move backward. 
+The state space has 37 dimensions and contains the agent's velocity, along with ray-based perception of objects around agent's forward direction. 
+
+The 35 dimensions of ray perception contain the following bits of informaton: 
+- 7 rays are projecting from the agent at the following angles (measured in degrees): [20, 90, 160, 45, 135, 70, 110] where 90 is directly in front of the agent. 
+- Each ray is 5 dimensional. If it encounters a detectable object (i.e. yellow banana, wall, blue banana, agent), the value at that position in the array is set to 1. 
+
+The last number within each ray is a distance measure which is a fraction of the ray length normalized to 1. Each ray is [Yellow Banana, Wall, Blue Banana, Agent, Distance]. For example, [0,1,1,0,0,0.2] means that there is a blue banana detected at 20% of the distance.
+
+The velocity of the agent is two dimensional: left/right velocity and forward/backward velocity. 
+
+There are 4 actions to choose from: move left, move right, move forward and move backward. 
 
 The report contains three parts:
 
