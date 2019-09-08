@@ -43,6 +43,7 @@ The task is episodic, and in order to solve the environment, your agent must get
 - Root /
     - README.md (This readme file)
     - Report.md (A report describing results)
+    - Report.pdf (A report describing results)
     - agent.py (The python code for the learning agent)
     - model.py (The neural networks)
     - learning.py (A class used to train the agent)
