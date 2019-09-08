@@ -82,5 +82,33 @@ env = UnityEnvironment(file_name="Banana.app")
 
 ## Instructions <a name="instructions"></a>
 
+Follow the instructions in Navigation_Solution.ipynb to get started.
+
+In order to train a network you have to create an agent:
+
+agent = Agent(state_size=state_size, action_size=action_size, dqnetwork= DQNetwork, update_type='dqn', seed=42)
+
+The implementation supports 3 different learning algorithms:
+
+- DQN: Use DQNetwork as a parameter for dqnetwork, and 'dqn as update_type
+- Double DQN: Use DQNetwork as a parameter for dqnetwork, and 'double_dqn as update_type
+- Dueling Double DQN: Use DuelingQNetwork as a parameter for dqnetwork, and 'double_dqn as update_type
+
+Feel free to modify the hyperparameters !
+
+In order to see an agent in action, load the corresponding network:
+
+agent.qnetwork_local.load_state_dict(torch.load('dqn.pth'))
+
+There are 3 saved model weights for the 3 different algorithms:
+
+- DQN: dqn.pth
+- Double DQN: double_dqn.pth
+- Dueling Double DQN: dueling_dqn.pth
+
 ## Results <a name="results"></a>
+
+The environment was solved in 377 episodes (currently). Below are plots showing the learning of all 3 algorithms. 
+
+A more detailed description of results can be found in the Report.md file.
 
