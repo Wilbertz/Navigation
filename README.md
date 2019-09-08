@@ -5,7 +5,7 @@
 1. [Introduction](#introduction)
 2. [Directory Structure](#directoryStructure)
 3. [Installation](#installation)
-4. [Instructions](#insrructions)
+4. [Instructions](#instructions)
 5. [Results](#results)
 
 ## Introduction <a name="introduction"></a>
