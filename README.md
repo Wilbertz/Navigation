@@ -108,7 +108,15 @@ There are 3 saved model weights for the 3 different algorithms:
 
 ## Results <a name="results"></a>
 
-The environment was solved in 377 episodes (currently). Below are plots showing the learning of all 3 algorithms. 
+The environment was solved in 377 episodes using XXXX. Below are plots showing the learning of all 3 algorithms. 
 
-A more detailed description of results can be found in the Report.md file.
+
+
+| Double DQN                                 | DQN                                | Dueling DQN                                         |
+| ------------------------------------------ | ---------------------------------- | --------------------------------------------------- |
+| ![double-dqn](images/double_dqn_scores.png) | ![dqn](images/dqn_scores.png) | ![dueling double dqn](images/dueling_dqn_scores.png) |
+
+
+
+A more detailed description of the results can be found in the Report.md file.
 
