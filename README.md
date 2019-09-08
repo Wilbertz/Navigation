@@ -48,16 +48,26 @@ The task is episodic, and in order to solve the environment, your agent must get
         - double_dqn_scores.png (Plot of scores for DoubleDQN solution)
         - dueling_dqn_scores.png (Plot of scores for DuelingDQN solution)
    
-### Getting Started
+## Installation
 
+This project was written in Python 3.6, using a Jupyter Notebook on Anaconda. Currently (Septemebr 2019) you cannot use Python 3.7, since tensorflow 1.7.1 doesn't have a version corresponding to python 3.7 yet.
+
+The relevant Python packages for this project are as follows:
+
+- numpy
+- torch
+- unityagents
+- matplotlib
+
+In addition to installing the above package the Unity environment has to be installed. This includes the following steps:
 
 1. Download the environment from one of the links below.  You need only select the environment that matches your operating system:
     - Linux: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Linux.zip)
     - Mac OSX: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana.app.zip)
     - Windows (64-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86_64.zip)
     
- 2. Place the file in this folder, unzip (or decompress) the file and then write the correct path in the argument for creating the environment under the notebook `Navigation_solution.ipynb`:
+ 2. Copy the downloaded file in this folder, unzip (or decompress) the file and then write the correct path in the argument for creating the environment under the notebook `Navigation_Solution.ipynb`:
 
 ```python
-env = env = UnityEnvironment(file_name="Banana.app")
+env = UnityEnvironment(file_name="Banana.app")
 
