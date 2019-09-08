@@ -36,7 +36,7 @@ class DQNetwork(nn.Module):
 class DuelingQNetwork(nn.Module):
     """Actor (Policy) Model used for Dueling QNetworks"""
 
-    def __init__(self, state_size: int, action_size: int, seed: int, fc1_units: int = 64, fc2_units: int = 32):
+    def __init__(self, state_size: int, action_size: int, seed: int = 42, fc1_units: int = 64, fc2_units: int = 32):
         """Initialize the model parameters and build a model with 2 hidden layers.
 
            Args:
@@ -69,3 +69,4 @@ class DuelingQNetwork(nn.Module):
 
         return value_function + advantage_function - \
             advantage_function.mean(1).unsqueeze(1).expand(x.size(0), self.action_size) / self.action_size
+
