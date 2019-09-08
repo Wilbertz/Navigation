@@ -78,8 +78,9 @@ In addition to installing the above package the Unity environment has to be inst
 
 ```python
 env = UnityEnvironment(file_name="Banana.app")
+```
 
-## Instructiuons <a name="instructions"></a>
+## Instructions <a name="instructions"></a>
 
 ## Results <a name="results"></a>
 
