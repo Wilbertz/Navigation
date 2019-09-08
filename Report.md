@@ -49,12 +49,13 @@ All of the above mentioned techniques were incorporated. The entire implementati
 The basic DQN has a tendency to overestimate the values for Q. This can be harmful for training performance and results in suboptimal policies. The main reason for this behaviour is the use of the max operation in the Bellman equation. In a paper [Deep Reinforcement Learning with Double Q-Learning](http://arxiv.org/abs/1509.06461) the authors van Hasselt, Guez and Silver proposed a solution.
 The idea of Double DQN is to disentangle the calculation of the Q-targets into finding the best action and then calculating the Q-value for that action in the given state. Double DQN use one network to choose the best action and the other to evaluate that action. The idea is that if one network chose an action as the best one by mistake, chances are that the other network wouldn't have a large Q-value for the sub-optimal action. 
 
-- **Dueling Network**: 
+- **Dueling DQN**: 
 In a paper [Dueling Network architecture for Deep Reinforcement Learning](https://arxiv.org/abs/1511.06581) the authors Ziyu Wang, Tom Schaul, Matteo Hessel, Hado van Hasselt, Marc Lanctot, Nando de Freitas described further improvements for DQN's.
 Their dueling network uses two separate estimators: one for the state value function and one for the state-dependent action advantage function. The main benefit of this factoring is to generalize learning across actions without imposing any change to the underlying reinforcement learning algorithm. Their results show that this architecture leads to better policy evaluation in the presence of many similar-valued actions.
 
+The implementaion of Double DQN and Dueling DQN used code snippets from Deep Reinforcement Learning Hands-On, Maxim Lapan, Packt Publishing, Chapter 7.
 
-  ### Hyperparameters
+ ### Hyperparameters
 
   The code uses a lot of hyperparameters. The values a are given below
 
