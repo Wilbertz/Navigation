@@ -4,7 +4,17 @@ Author: [Harald Wilbertz](http://github.com/wilbertz)
 
 The project uses Reinforcement Learning methods, in particular: [Deep Q-learning](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf) and several variants, to learn a suitable policy using the Unity banana environment. 
 The environment consists of a continuous state space with the goal to collect yellow bananas (reward: +1) while avoiding blue bananas (reward: -1). 
-The state space has 37 dimensions and contains the agent's velocity, along with ray-based perception of objects around agent's forward direction. There are 4 actions to choose from: move left, move right, move forward and move backward. 
+The state space has 37 dimensions and contains the agent's velocity, along with ray-based perception of objects around agent's forward direction. 
+
+The 35 dimensions of ray perception contain the following bits of informaton: 
+- 7 rays are projecting from the agent at the following angles (measured in degrees): [20, 90, 160, 45, 135, 70, 110] where 90 is directly in front of the agent. 
+- Each ray is 5 dimensional. If it encounters a detectable object (i.e. yellow banana, wall, blue banana, agent), the value at that position in the array is set to 1. 
+
+The last number within each ray is a distance measure which is a fraction of the ray length normalized to 1. Each ray is [Yellow Banana, Wall, Blue Banana, Agent, Distance]. For example, [0,1,1,0,0,0.2] means that there is a blue banana detected at 20% of the distance.
+
+The velocity of the agent is two dimensional: left/right velocity and forward/backward velocity. 
+
+There are 4 actions to choose from: move left, move right, move forward and move backward. 
 
 The report contains three parts:
 
@@ -39,12 +49,13 @@ All of the above mentioned techniques were incorporated. The entire implementati
 The basic DQN has a tendency to overestimate the values for Q. This can be harmful for training performance and results in suboptimal policies. The main reason for this behaviour is the use of the max operation in the Bellman equation. In a paper [Deep Reinforcement Learning with Double Q-Learning](http://arxiv.org/abs/1509.06461) the authors van Hasselt, Guez and Silver proposed a solution.
 The idea of Double DQN is to disentangle the calculation of the Q-targets into finding the best action and then calculating the Q-value for that action in the given state. Double DQN use one network to choose the best action and the other to evaluate that action. The idea is that if one network chose an action as the best one by mistake, chances are that the other network wouldn't have a large Q-value for the sub-optimal action. 
 
-- **Dueling Network**: 
+- **Dueling DQN**: 
 In a paper [Dueling Network architecture for Deep Reinforcement Learning](https://arxiv.org/abs/1511.06581) the authors Ziyu Wang, Tom Schaul, Matteo Hessel, Hado van Hasselt, Marc Lanctot, Nando de Freitas described further improvements for DQN's.
 Their dueling network uses two separate estimators: one for the state value function and one for the state-dependent action advantage function. The main benefit of this factoring is to generalize learning across actions without imposing any change to the underlying reinforcement learning algorithm. Their results show that this architecture leads to better policy evaluation in the presence of many similar-valued actions.
 
+The implementaion of Double DQN and Dueling DQN used code snippets from Deep Reinforcement Learning Hands-On, Maxim Lapan, Packt Publishing, Chapter 7.
 
-  ### Hyperparameters
+ ### Hyperparameters
 
   The code uses a lot of hyperparameters. The values a are given below
 
