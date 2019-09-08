@@ -59,23 +59,23 @@ The implementaion of Double DQN and Dueling DQN used code snippets from Deep Rei
 
   The code uses a lot of hyperparameters. The values a are given below
 
-  | Hyperparameter                      | Value |
-  | ----------------------------------- | ----- |
-  | Experience buffer size              | 10000 |
-  | Batch size                          | 64    |
-  | Gamma (discount factor)             | 0.99  |
-  | Tau                                 | 1e-3  |
-  | Number of episodes                  | 500   |
-  | Update interval                     | 5     |
-  | Learning rate                       | 1e-3  |
-  | Max number of steps per episode     | 2000  |
-  | Epsilon start                       | 1.0   |
-  | Epsilon minimum                     | 0.1   |
-  | Epsilon decay                       | 0.99  |
+  | Hyperparameter                      | Value  |
+  | ----------------------------------- | ------ |
+  | Experience buffer size              | 100000 |
+  | Batch size                          | 64     |
+  | Gamma (discount factor)             | 0.99   |
+  | Tau                                 | 1e-3   |
+  | Number of episodes                  | 2000   |
+  | Update interval                     | 5      |
+  | Learning rate                       | 1e-3   |
+  | Max number of steps per episode     | 2000   |
+  | Epsilon start                       | 1.0    |
+  | Epsilon minimum                     | 0.1    |
+  | Epsilon decay                       | 0.99   |
 
 ## Results
 
-The best performance was achieved by **Double DQN** where the reward of +13 was achieved in **377** episodes. The plots of the rewards for the different variants of DQN is shown below:
+The best performance was achieved by **DQN** where the reward of +13 was achieved in **338** episodes. Double DQN required 430 episodes, Dueling DQN 442 episodes. The plots of the rewards for the different variants of DQN is shown below:
 
 
 | Double DQN                                 | DQN                                | Dueling DQN                                         |
