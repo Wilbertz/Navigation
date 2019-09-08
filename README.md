@@ -45,6 +45,7 @@ The task is episodic, and in order to solve the environment, your agent must get
     - Report.md (A report describing results)
     - agent.py (The python code for the learning agent)
     - model.py (The neural networks)
+    - learning.py (A class used to train the agent)
     - Navigation_Solution.ipynb (A Jupyter notebook used to sove the RL problem)
     - dqn.pth (The neural network weights for the DQN solution)
     - double_dqn.pth (The neural network weights for the DoubleDQN solution)
